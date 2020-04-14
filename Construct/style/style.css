@@ -1,0 +1,615 @@
+/* 
+@keyframes colourTest {
+0%{background-color: #313131}
+50%{background-color: #1023b1}
+100%{background-color: #313131}
+}
+ */
+
+/* TEST BED */
+
+:root {
+    --mainColor: #80A9FF;
+    --accentColor: #93E68A;
+    --textColor: #313131;
+    --linkborder: 3px;
+    --buttonColor: #405580;
+}
+
+/* STYLE - FONTFACE */
+/* Header */
+@font-face {
+    font-family: 'PoppinsHeader';
+    src: url('/style/fonts/Poppins-Medium.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Body */
+@font-face {
+    font-family: 'PoppinsBody';
+    src: url('/style/fonts/Poppins-Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* MOBILE MEDIA QUERY  */
+@media only screen and (max-width: 959px) {
+
+    h4,
+    .headerText {
+        font-family: 'PoppinsHeader', arial, sans-serif;
+        font-size: 1.5em;
+        font-weight: normal;
+        font-style: normal;
+        margin: 0px;
+        text-align: center;
+    }
+
+    h6,
+    .subheaderText {
+        font-family: 'PoppinsBody', arial, sans-serif;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 0.8em;
+        color: var(--buttonColor);
+    }
+
+    h6 {
+        font-size: 1.2em;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    p,
+    .bodyText {
+        font-family: 'PoppinsBody', arial, sans-serif;
+        font-size: 0.8em;
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* SITE */
+    #site_Container {
+        width: 100vw;
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        column-gap: 6px;
+    }
+
+    /* SITE - NAV */
+    #site_Nav {
+        grid-column: 1 / span 8;
+        grid-row: 1 / span 1;
+        display: grid;
+        grid-template-columns: 20% 20% auto 20% 20%;
+        place-items: center;
+        background-color: white;
+
+    }
+
+    #Nav_How {
+        grid-column-start: 4;
+    }
+
+    #logo {
+        max-width: 60%;
+        height: auto;
+        place-self: center;
+    }
+
+    /* SITE - CONTENT */
+    #site_Content {
+        grid-column: 1 / span 8;
+        grid-row: 2 / 13;
+        display: grid;
+        column-gap: 6px;
+        grid-template-columns: 100%;
+        grid-template-rows: 10% 80% 20%;
+    }
+
+    /* SITE - CONTENT - CTA */
+    #callToAction {
+        display: grid;
+        padding: 5%;
+        grid-row-start: 2;
+        grid-template-rows: 25% 25% 25% 25%;
+    }
+
+    /* SITE - CONTENT - INTRO  */
+    #assessIntro {
+        display: none;
+        grid-column-start: 2;
+        grid-row-start: 2;
+    }
+
+ 
+
+    
+    /* SITE - CONTENT - CTA - ITEMS */
+    #ctaText {
+        grid-row-start: 2;
+    }
+
+    #ctaBtn {
+        grid-row-start: 3;
+        border-radius: 20px;
+    }
+
+    /* SITE - CONTENT - PROMPTS  */
+
+    .assessPrompts {
+        display: none;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: auto 10% 10% 10% 10% 10% auto;
+        grid-column-start: 1;
+        grid-row-start: 2;
+    }
+
+    /* SITE - CONTENT - PROMPTS - ITEMS */
+    .prompts {
+        text-align: center;
+        place-self: center;
+        grid-area: 1 / 2 / 1 / 8;
+    }
+
+    .responseCard,
+    .review {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'PoppinsHeader', arial, sans-serif;
+        font-weight: normal;
+        font-style: normal;
+        background-color: var(--mainColor);
+        color: #ffffff;
+        margin: 0px;
+        border-bottom: 1px solid var(--buttonColor);
+        text-align: center;
+    }
+
+    .adapt {
+        grid-area: 2 / 1 / 2 / 9;
+    }
+
+    .location {
+        grid-area: 3 / 1 / 3 / 9;
+    }
+
+    .desire {
+        grid-area: 4 / 1 / 4 / 9;
+    }
+
+    .need {
+        grid-area: 5 / 1 / 5 / 9;
+    }
+
+    .external {
+        grid-area: 6 / 1 / 6 / 9;
+    }
+
+    /* SITE - CONTENT - RESPONSES  */
+
+#promptReview {
+    display: none;
+    grid-column-start: 1;
+    grid-row-start: 2;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: auto 10% 10% 10% 10% 10% auto;
+}
+
+.response {
+    grid-area: 2 / 2 / 1 / 8;
+}
+
+#struggle {
+    grid-area: 3 / 1 / 2 / 9;
+}
+
+#success {
+    grid-area: 4 / 1 / 3 / 9;
+}
+
+#worry {
+    grid-area: 5 / 1 / 4 / 9;
+}
+
+#reviewConfirm {
+    grid-area: 7 / 4 / 7 / 6;
+}
+
+ /* SITE - CONTENT - ASSESSMENT  */
+#assessmentContainer {
+    display: none;
+    grid-column-start: 1;
+    grid-row-start: 2;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: auto 10% 10% 10% 10% 10% auto;
+}
+
+#question {
+    text-align: center;
+    place-self: center;
+    grid-area: 1 / 2 / 1 / 8;
+
+}
+
+#answerCard {
+    grid-area: 2 / 1 / 6 / 9;
+    grid-template-rows: repeat(5, 1fr);
+    column-gap: 12px;
+    display: grid;
+
+}
+.singleA {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'PoppinsHeader', arial, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    background-color: var(--mainColor);
+    color: #ffffff;
+    margin: 0px;
+    border-bottom: 1px solid var(--buttonColor);
+    text-align: center;
+} 
+
+/* SITE - CONTENT - RESULTS */
+
+#resultsContainer {
+    grid-row-start: 2;
+    display: none;
+    grid-template-rows: auto auto auto;
+}
+
+.results {
+        display:grid;
+    }
+
+    #resultsStruggle {
+    }
+
+    #resultsSuccess {
+    }
+
+    #resultsWorry {
+    }
+
+
+
+/* SITE - FOOTER */    
+#Site_Footer {
+    grid-column: 2 / span 6;
+    grid-row: 12;
+    align-self: end;
+    text-align: center;
+
+}
+
+    /* END OF MOBILE MEDIA QUERY */
+}
+
+
+
+
+
+/* DESKTOP MEDIA QUERY */
+@media only screen and (min-width: 960px) {
+
+    /* DESKTOP STYLE */
+
+    h1 {
+        font-family: 'PoppinsBody', arial, sans-serif;
+        font-size: 1.5em;
+        text-align: center;
+        font-weight: normal;
+        font-style: normal;
+        margin: 0px;
+
+
+    }
+
+    h4,
+    .headerText {
+        font-family: 'PoppinsHeader', arial, sans-serif;
+        font-size: 3.5em;
+        text-align: center;
+        font-weight: normal;
+        font-style: normal;
+        margin: 0px;
+    }
+
+    h6,
+    .subheaderText {
+        font-family: 'PoppinsBody', arial, sans-serif;
+        font-size: 1.3em;
+        font-weight: normal;
+        font-style: normal;
+        color: var(--buttonColor);
+    }
+
+    h6 {
+        font-size: 1.8em;
+        padding: 0px;
+        margin: 0px;
+
+    }
+
+    p,
+    .bodyText {
+        font-family: 'PoppinsBody', arial, sans-serif;
+        font-size: 1em;
+        font-weight: normal;
+        font-style: normal;
+        line-height: 1.6em;
+    }
+
+    .captionText {
+        font-family: 'PoppinsBody', arial, sans-serif;
+        font-size: 0.6em;
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* SITE */
+    #site_Container {
+        width: 100w;
+        height: 98vh;
+        margin-left: 14%;
+        margin-right: 14%;
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
+        grid-template-rows: repeat(9, 1fr) auto;
+        column-gap: 24px;
+    }
+
+    /* SITE - NAV */
+    #site_Nav {
+        grid-column: 1 / span 16;
+        grid-row: 1 / span 1;
+        display: grid;
+        grid-template-columns: 5% 12.5% auto 10% 10% 10%;
+        place-items: center;
+    }
+
+    #logo {
+
+    }
+
+    /* SITE - NAV - ITEMS */
+    #Nav_How {
+        grid-column-start: 5;
+    }
+
+    /* SITE - CONTENT */
+    #site_Content {
+        grid-column: 1 / span 16;
+        grid-row: 2 / 9;
+        display: grid;
+        column-gap: 24px;
+        grid-template-columns: auto 80% auto;
+        grid-template-rows: auto 80% auto;
+        /* place-items: center; */
+
+    }
+
+    /* SITE - CONTENT - CTA */
+    #callToAction {
+        grid-row-start: 2;
+        grid-column-start: 2;
+        display: grid;
+    }
+
+    #ctaText {
+
+        place-self: center;
+
+    }
+
+    /* SITE - CONTENT - INTRO  */
+    #assessIntro {
+        display: none;
+        grid-column-start: 2;
+        grid-row-start: 2;
+        text-align: center;
+    }
+    /* SITE - CONTENT - PROMPTS  */
+    .assessPrompts {
+        display: grid;
+        grid-template-columns: repeat(5, 18%);
+        grid-template-rows: 10% 60% 10%;
+        column-gap: 24px;
+        row-gap: 16px;
+        grid-column-start: 2;
+        grid-row-start: 2;
+        text-align: center;
+    }
+
+    .prompts {
+        grid-area: 1 / 1 / 1 / 6;
+    }
+
+    #prompt1 {
+        display: none;
+    }
+
+    #prompt2 {
+        display: none;
+    }
+
+    #prompt3 {
+        display: none;
+    }
+    
+    /* SITE - CONTENT - PROMPTS - REVIEW  */
+    .responseCard,
+    .review {
+        background-color: var(--mainColor);
+        border-radius: 4px;
+        justify-content: center;
+        align-items: center;
+        font-family: 'PoppinsHeader', arial, sans-serif;
+        font-size: 1.2em;
+        font-weight: normal;
+        font-style: normal;
+        color: white;
+        padding: 15px;
+        text-align: center;
+    }
+
+    #promptReview {
+        display: none;
+        grid-column-start: 2;
+        grid-row-start: 2;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 10% 60% auto;
+        column-gap: 24px;
+        row-gap: 16px;
+        text-align: center;
+
+    }
+
+    .adapt, .location, .desire, .need, .external, .review {
+        display: flex;
+    }
+
+    .response {
+        grid-area: 1 / 1 / 1 / 6;
+    }
+
+    #struggle {
+        grid-column-start: 2;
+    }
+
+    #reviewConfirm {
+        grid-area: 3 / 3 / 3 / 4
+
+    }
+
+    /* SITE - CONTENT - ASSESSMENT  */
+    #assessmentContainer {
+        display: none;
+        grid-column-start: 2;
+        grid-row-start: 2;
+        grid-template-columns: repeat(7, 1fr);
+        column-gap: 24px;
+        row-gap: 16px;
+        grid-template-areas:
+            ". question question question question question ."
+            ". answer answer answer answer answer ."
+            ". . . next . . .";
+    }
+
+    #question {
+
+        grid-area: question;
+
+    }
+
+    #answerCard {
+
+        grid-area: answer;
+        grid-template-columns: repeat(5, 1fr);
+        column-gap: 24px;
+        display: grid;
+        justify-content: space-evenly;
+        place-content: center;
+    }
+
+    /* SITE - CONTENT - RESULTS  */
+    .results {
+        grid-column-start: 2;
+        grid-row-start: 2;
+        text-align: left;
+        display: grid;
+        grid-template-columns: 25% 25% auto;
+        grid-template-rows: auto 1fr 1fr;
+        column-gap: 16px;
+    }
+
+    #resultsContainer {
+        grid-row-start: 2;
+        grid-column-start: 2;
+        display: none;
+        grid-template-rows: auto auto auto;
+    }
+
+
+    .resultsTitle {
+        grid-column: 1 / 3;
+    }
+
+    .resultsContent {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+
+    #resultsStruggle {
+        grid-row-start: 2;
+    }
+
+    #resultsSuccess {
+        grid-row-start: 3;
+    }
+
+    #resultsWorry {
+        grid-row-start: 4;
+    }
+
+
+    mark {
+        padding: 4px;
+    }
+
+    /* SITE - FOOTER */
+    #Site_Footer {
+        grid-column: 1 / span 16;
+        align-self: end;
+        justify-self: center;
+
+    }
+
+    /* END OF DESKTOP MEDIA STYLE */
+}
+
+/* STYLE - HTML ELEMENTS */
+/* Links */
+/* NOT UPDATED FOR MOBILE */
+a {
+    font-family: 'PoppinsHeader', arial, sans-serif;
+    font-size: 0.8em;
+    background:
+        linear-gradient(to bottom, var(--mainColor) 0%,
+            var(--mainColor) 100%);
+    background-position: 0% 100%;
+    background-repeat: repeat-x;
+    background-size: 4px 4px;
+    color: #313131;
+    text-decoration: none;
+    transition: background-size .2s;
+    padding: 2px;
+}
+
+a:hover {
+    color: white;
+    background-size: 6px 100%;
+    border-radius: var(--linkborder);
+    padding: 2px 4px 2px 4px;
+}
+
+/* Buttons */
+.button {
+    font-family: 'PoppinsHeader', arial, sans-serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    font-style: normal;
+    color: #313131;
+    place-self: center;
+}
+
+body {
+    background-color: #ffffff;
+    margin: 0px;
+}
