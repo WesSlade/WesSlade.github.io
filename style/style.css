@@ -44,6 +44,7 @@
         font-style: normal;
         margin: 0px;
     }
+
     h4,
     .headerText {
         font-family: 'PoppinsHeader', arial, sans-serif;
@@ -62,6 +63,7 @@
         font-style: normal;
         font-size: 0.8em;
         color: var(--buttonColor);
+        margin: 0px;
     }
 
     h6 {
@@ -69,7 +71,7 @@
         font-size: 1.5em;
     }
 
-    
+
     p,
     .bodyText {
         font-family: 'PoppinsBody', arial, sans-serif;
@@ -81,6 +83,7 @@
     /* SITE */
     #site_Container {
         width: 100vw;
+        height: 100vh;
         display: grid;
         grid-template-columns: repeat(8, 1fr);
         grid-template-rows: repeat(12, 1fr);
@@ -92,7 +95,7 @@
         grid-column: 1 / span 8;
         grid-row: 1 / span 1;
         display: grid;
-        grid-template-columns: 20% 20% 20% auto auto;
+        grid-template-columns: 20% 20% auto 22.5% 22.5%;
         place-items: center;
         background-color: white;
 
@@ -104,21 +107,22 @@
 
     #logo {
         max-width: 60%;
-        height: auto;
+        height: 60%;
         place-self: center;
     }
 
 
     .docs {
         font-family: 'PoppinsBody', arial, sans-serif;
-        font-size: 0.8em;
         font-weight: normal;
         font-style: normal;
+        font-size: 1em;
         line-height: 1.2em;
         text-decoration: none;
         color: var(--textColor);
 
     }
+
     .button {
         font-family: 'PoppinsHeader', arial, sans-serif;
         font-size: 1.3em;
@@ -139,7 +143,7 @@
         display: grid;
         column-gap: 6px;
         grid-template-columns: 100%;
-        grid-template-rows: 10% 80% 20%;
+        grid-template-rows: 10% auto 20%;
     }
 
     /* SITE - CONTENT - CTA */
@@ -156,6 +160,7 @@
         grid-column-start: 2;
         grid-row-start: 2;
     }
+
     /* SITE - CONTENT - CTA - ITEMS */
     #ctaText {
         grid-row-start: 2;
@@ -282,27 +287,47 @@
     /* SITE - CONTENT - RESULTS */
 
     #resultsContainer {
-        grid-row-start: 2;
         display: none;
-        grid-template-rows: auto auto auto;
+        grid-row-start: 2;
+        grid-column-start: 1;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        padding: 20px
     }
 
     .results {
         display: grid;
+        grid-template-columns: 60% 20% 20%;
+        grid-template-rows: auto;
     }
 
-    #resultsStruggle {}
+   .resultsTitle {
+        grid-area: 1 / 1 / 1 / 6;
 
-    #resultsSuccess {}
+    }
 
-    #resultsWorry {}
+    .resultsContent {
+        grid-area: 2 / 1 / 4 / 4;
 
+    }
 
+    #resultsStruggle {
+        grid-area: 1 / 2 / 4 / 8;
+    }
+
+    #resultsSuccess {
+        grid-area: 4 / 2 / 7 / 8;
+    }
+
+    #resultsWorry {
+        grid-area: 7 / 2 / 10 / 8;
+    }
+ 
 
     /* SITE - FOOTER */
     #Site_Footer {
-        grid-column: 2 / span 6;
-        grid-row: 12;
+        grid-area: 3 / 1 / 3 / 1;
+        justify-self: center;
         align-self: end;
         text-align: center;
 
@@ -314,8 +339,15 @@
 
 
 
+/* 
 
-/* DESKTOP MEDIA QUERY */
+DESKTOP MEDIA QUERY 
+DESKTOP MEDIA QUERY 
+DESKTOP MEDIA QUERY 
+DESKTOP MEDIA QUERY 
+DESKTOP MEDIA QUERY 
+
+*/
 @media only screen and (min-width: 960px) {
 
     /* DESKTOP STYLE */
@@ -584,7 +616,7 @@
         shape-outside: circle();
         clip-path: circle();
         background: #ffffff;
-        
+
     }
 
     .bubbleInside:hover {
@@ -593,11 +625,11 @@
     }
 
     .singleA {
-            font-family: 'PoppinsBody', arial, sans-serif;
-            font-size: 1.2em;
-            font-weight: normal;
-            font-style: normal;
-            text-align: center;
+        font-family: 'PoppinsBody', arial, sans-serif;
+        font-size: 1.2em;
+        font-weight: normal;
+        font-style: normal;
+        text-align: center;
     }
 
 
@@ -660,40 +692,39 @@
 
     /* SITE - FOOTER */
     #Site_Footer {
-        grid-column: 1 / span 16;
-        align-self: end;
+        grid-area: 3 / 2 / 3 / 2;
         justify-self: center;
 
     }
 
-.underline {
-    background:
-        linear-gradient(to bottom, var(--mainColor) 0%,
-            var(--mainColor) 100%);
-    background-position: 0% 100%;
-    background-repeat: repeat-x;
-    background-size: 4px 4px;
-    color: var(--textColor);
-    text-decoration: none;
-    transition: background-size .2s;
-    padding: 2px;
-    color: var(--textColor);
-}
+    .underline {
+        background:
+            linear-gradient(to bottom, var(--mainColor) 0%,
+                var(--mainColor) 100%);
+        background-position: 0% 100%;
+        background-repeat: repeat-x;
+        background-size: 4px 4px;
+        color: var(--textColor);
+        text-decoration: none;
+        transition: background-size .2s;
+        padding: 2px;
+        color: var(--textColor);
+    }
 
-.underline:hover {
-    color: white;
-    background-size: 6px 100%;
-    border-radius: var(--linkborder);
-    padding: 2px 4px 2px 4px;
-}
+    .underline:hover {
+        color: white;
+        background-size: 6px 100%;
+        border-radius: var(--linkborder);
+        padding: 2px 4px 2px 4px;
+    }
 
-.button {
-    font-family: 'PoppinsHeader', arial, sans-serif;
-    font-size: 1.3em;
-    font-weight: normal;
-    font-style: normal;
-    place-self: center;
-}
+    .button {
+        font-family: 'PoppinsHeader', arial, sans-serif;
+        font-size: 1.3em;
+        font-weight: normal;
+        font-style: normal;
+        place-self: center;
+    }
 
 
 
@@ -709,4 +740,7 @@
 body {
     background-color: #ffffff;
     margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
 }
