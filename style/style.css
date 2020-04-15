@@ -677,6 +677,7 @@
     text-decoration: none;
     transition: background-size .2s;
     padding: 2px;
+    color: var(--textColor);
 }
 
 .underline:hover {
@@ -685,6 +686,17 @@
     border-radius: var(--linkborder);
     padding: 2px 4px 2px 4px;
 }
+
+.button {
+    font-family: 'PoppinsHeader', arial, sans-serif;
+    font-size: 1.3em;
+    font-weight: normal;
+    font-style: normal;
+    place-self: center;
+}
+
+
+
     /* END OF DESKTOP MEDIA STYLE */
 }
 
