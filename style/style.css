@@ -123,10 +123,6 @@
         grid-column-start: 2;
         grid-row-start: 2;
     }
-
- 
-
-    
     /* SITE - CONTENT - CTA - ITEMS */
     #ctaText {
         grid-row-start: 2;
@@ -154,6 +150,13 @@
         grid-area: 1 / 2 / 1 / 8;
     }
 
+    .responseContainer {
+        grid-area: 2 / 1 / 7 / 9;
+        display: grid;
+        grid-template-rows: repeat(5, 1fr);
+        column-gap: 24px;
+    }
+
     .responseCard,
     .review {
         display: flex;
@@ -169,124 +172,105 @@
         text-align: center;
     }
 
-    .adapt {
-        grid-area: 2 / 1 / 2 / 9;
-    }
 
-    .location {
-        grid-area: 3 / 1 / 3 / 9;
-    }
-
-    .desire {
-        grid-area: 4 / 1 / 4 / 9;
-    }
-
-    .need {
-        grid-area: 5 / 1 / 5 / 9;
-    }
-
-    .external {
-        grid-area: 6 / 1 / 6 / 9;
-    }
 
     /* SITE - CONTENT - RESPONSES  */
 
-#promptReview {
-    display: none;
-    grid-column-start: 1;
-    grid-row-start: 2;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: auto 10% 10% 10% 10% 10% auto;
-}
-
-.response {
-    grid-area: 2 / 2 / 1 / 8;
-}
-
-#struggle {
-    grid-area: 3 / 1 / 2 / 9;
-}
-
-#success {
-    grid-area: 4 / 1 / 3 / 9;
-}
-
-#worry {
-    grid-area: 5 / 1 / 4 / 9;
-}
-
-#reviewConfirm {
-    grid-area: 7 / 4 / 7 / 6;
-}
-
- /* SITE - CONTENT - ASSESSMENT  */
-#assessmentContainer {
-    display: none;
-    grid-column-start: 1;
-    grid-row-start: 2;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: auto 10% 10% 10% 10% 10% auto;
-}
-
-#question {
-    text-align: center;
-    place-self: center;
-    grid-area: 1 / 2 / 1 / 8;
-
-}
-
-#answerCard {
-    grid-area: 2 / 1 / 6 / 9;
-    grid-template-rows: repeat(5, 1fr);
-    column-gap: 12px;
-    display: grid;
-
-}
-.singleA {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'PoppinsHeader', arial, sans-serif;
-    font-weight: normal;
-    font-style: normal;
-    background-color: var(--mainColor);
-    color: #ffffff;
-    margin: 0px;
-    border-bottom: 1px solid var(--buttonColor);
-    text-align: center;
-} 
-
-/* SITE - CONTENT - RESULTS */
-
-#resultsContainer {
-    grid-row-start: 2;
-    display: none;
-    grid-template-rows: auto auto auto;
-}
-
-.results {
-        display:grid;
+    #promptReview {
+        display: none;
+        grid-column-start: 1;
+        grid-row-start: 2;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: auto 10% 10% 10% 10% 10% auto;
     }
 
-    #resultsStruggle {
+    .response {
+        grid-area: 2 / 2 / 1 / 8;
     }
 
-    #resultsSuccess {
+    #struggle {
+        grid-area: 3 / 1 / 2 / 9;
     }
 
-    #resultsWorry {
+    #success {
+        grid-area: 4 / 1 / 3 / 9;
+    }
+
+    #worry {
+        grid-area: 5 / 1 / 4 / 9;
+    }
+
+    #reviewConfirm {
+        grid-area: 7 / 4 / 7 / 6;
+    }
+
+    /* SITE - CONTENT - ASSESSMENT  */
+    #assessmentContainer {
+        display: none;
+        grid-column-start: 1;
+        grid-row-start: 2;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: auto 10% 10% 10% 10% 10% auto;
+    }
+
+    #question {
+        text-align: center;
+        place-self: center;
+        grid-area: 1 / 2 / 1 / 8;
+
     }
 
 
+    #answerCard {
+        grid-area: 2 / 1 / 6 / 9;
+        grid-template-rows: repeat(5, 1fr);
+        column-gap: 12px;
+        display: grid;
 
-/* SITE - FOOTER */    
-#Site_Footer {
-    grid-column: 2 / span 6;
-    grid-row: 12;
-    align-self: end;
-    text-align: center;
+    }
 
-}
+    .singleA {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'PoppinsHeader', arial, sans-serif;
+        font-weight: normal;
+        font-style: normal;
+        background-color: var(--mainColor);
+        color: #ffffff;
+        margin: 0px;
+        border-bottom: 1px solid var(--buttonColor);
+        text-align: center;
+    }
+
+    /* SITE - CONTENT - RESULTS */
+
+    #resultsContainer {
+        grid-row-start: 2;
+        display: none;
+        grid-template-rows: auto auto auto;
+    }
+
+    .results {
+        display: grid;
+    }
+
+    #resultsStruggle {}
+
+    #resultsSuccess {}
+
+    #resultsWorry {}
+
+
+
+    /* SITE - FOOTER */
+    #Site_Footer {
+        grid-column: 2 / span 6;
+        grid-row: 12;
+        align-self: end;
+        text-align: center;
+
+    }
 
     /* END OF MOBILE MEDIA QUERY */
 }
@@ -337,6 +321,15 @@
 
     }
 
+    .instructText {
+        font-family: 'PoppinsHeader', arial, sans-serif;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 1.4em;
+        color: var(--textColor);
+
+    }
+
     p,
     .bodyText {
         font-family: 'PoppinsBody', arial, sans-serif;
@@ -374,13 +367,22 @@
         place-items: center;
     }
 
-    #logo {
-
-    }
+    #logo {}
 
     /* SITE - NAV - ITEMS */
     #Nav_How {
         grid-column-start: 5;
+    }
+
+
+    .docs {
+        font-family: 'PoppinsBody', arial, sans-serif;
+        font-size: .8em;
+        font-weight: normal;
+        font-style: normal;
+        line-height: 1.2em;
+        text-decoration: none;
+        color: var(--textColor);
     }
 
     /* SITE - CONTENT */
@@ -415,6 +417,7 @@
         grid-row-start: 2;
         text-align: center;
     }
+
     /* SITE - CONTENT - PROMPTS  */
     .assessPrompts {
         display: grid;
@@ -425,6 +428,14 @@
         grid-column-start: 2;
         grid-row-start: 2;
         text-align: center;
+
+    }
+
+    .responseContainer {
+        grid-area: 2 / 1 / 2 / 6;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        column-gap: 24px;
     }
 
     .prompts {
@@ -442,7 +453,7 @@
     #prompt3 {
         display: none;
     }
-    
+
     /* SITE - CONTENT - PROMPTS - REVIEW  */
     .responseCard,
     .review {
@@ -455,7 +466,7 @@
         font-weight: normal;
         font-style: normal;
         color: white;
-        padding: 15px;
+        padding: 5px;
         text-align: center;
     }
 
@@ -471,7 +482,12 @@
 
     }
 
-    .adapt, .location, .desire, .need, .external, .review {
+    .adapt,
+    .location,
+    .desire,
+    .need,
+    .external,
+    .review {
         display: flex;
     }
 
@@ -485,7 +501,6 @@
 
     #reviewConfirm {
         grid-area: 3 / 3 / 3 / 4
-
     }
 
     /* SITE - CONTENT - ASSESSMENT  */
@@ -493,29 +508,79 @@
         display: none;
         grid-column-start: 2;
         grid-row-start: 2;
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-rows: 30% 20% 30% auto;
         column-gap: 24px;
         row-gap: 16px;
-        grid-template-areas:
-            ". question question question question question ."
-            ". answer answer answer answer answer ."
-            ". . . next . . .";
     }
 
     #question {
 
-        grid-area: question;
+        grid-area: 1 / 2 / 1 / 9;
+        text-align: center;
+        place-self: center;
 
     }
 
-    #answerCard {
-
-        grid-area: answer;
+    #bubbleCard {
+        grid-area: 2 / 2 / 2 / 9;
         grid-template-columns: repeat(5, 1fr);
         column-gap: 24px;
         display: grid;
         justify-content: space-evenly;
+        text-align: center;
+    }
+
+
+    .bubble {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 95%;
+        height: 95%;
+        shape-outside: circle();
+        clip-path: circle();
+        background: var(--buttonColor);
+
+    }
+
+
+    .bubbleInside {
+        align-items: center;
+        justify-content: center;
+        width: 92%;
+        height: 92%;
+        shape-outside: circle();
+        clip-path: circle();
+        background: #ffffff;
+        
+    }
+
+    .bubbleInside:hover {
+        background: var(--buttonColor);
+        cursor: pointer;
+    }
+
+    .singleA {
+            font-family: 'PoppinsBody', arial, sans-serif;
+            font-size: 1.2em;
+            font-weight: normal;
+            font-style: normal;
+            text-align: center;
+    }
+
+
+    #answerCard {
+
+        grid-area: 3 / 2 / 3 / 9;
+        grid-template-columns: repeat(5, 1fr);
+        column-gap: 24px;
+        display: grid;
         place-content: center;
+        text-align: center;
+        cursor: default;
+
     }
 
     /* SITE - CONTENT - RESULTS  */
@@ -577,22 +642,20 @@
 /* STYLE - HTML ELEMENTS */
 /* Links */
 /* NOT UPDATED FOR MOBILE */
-a {
-    font-family: 'PoppinsHeader', arial, sans-serif;
-    font-size: 0.8em;
+.underline {
     background:
         linear-gradient(to bottom, var(--mainColor) 0%,
             var(--mainColor) 100%);
     background-position: 0% 100%;
     background-repeat: repeat-x;
     background-size: 4px 4px;
-    color: #313131;
+    color: var(--textColor);
     text-decoration: none;
     transition: background-size .2s;
     padding: 2px;
 }
 
-a:hover {
+.underline:hover {
     color: white;
     background-size: 6px 100%;
     border-radius: var(--linkborder);

@@ -2,7 +2,7 @@ var dNor = 600;
 var dLong = 1000;
 var pause = 1000;
 var respColumn = 5;
-
+var windowWidth = 0;
 
 /* User Input For Scales */
 var assessSelect = [
@@ -108,7 +108,13 @@ $(document).ready(function () {
     assessSelect[assessCounter][0] = ($(this).attr("value"));
     assessSelect[assessCounter][1] = ($(this).text());
     assessCounter++;
-    $(".assessPrompts").css("grid-template-columns", "repeat(4, 18%)");
+    /* Check between mobile / desktop window sizes, then adjust grid accordingly */
+    windowWidth = $(window).width();
+    if (windowWidth <= 959) {
+      $(".responseContainer").css("grid-template-rows", "repeat(4, 18%)");
+    } else {
+      $(".responseContainer").css("grid-template-columns", "repeat(4, 18%)");
+    }
     /* remove selection from future responses */
     var el = ($(this).attr('class').split(' ').pop());
     console.log(el);
@@ -125,7 +131,13 @@ $(document).ready(function () {
     assessSelect[assessCounter][0] = ($(this).attr("value"));
     assessSelect[assessCounter][1] = ($(this).text());
     assessCounter++;
-    $(".assessPrompts").css("grid-template-columns", "repeat(3, 18%)");
+    /* Check between mobile / desktop window sizes, then adjust grid accordingly */
+    windowWidth = $(window).width();
+    if (windowWidth <= 959) {
+      $(".responseContainer").css("grid-template-rows", "repeat(3, 18%)");
+    } else {
+      $(".responseContainer").css("grid-template-columns", "repeat(3, 18%)");
+    }
     /* remove selection from future responses */
     var el = ($(this).attr('class').split(' ').pop());
     console.log(el);
@@ -243,6 +255,7 @@ $(document).ready(function () {
     /* Wait for your friend displayQuest to grab the next question, then fade it in */
     function nextQuest() {
       $("#question").fadeIn();
+      $("#bubbleCard").fadeIn();
       $("#answerCard").fadeIn();
     }
 
@@ -280,71 +293,136 @@ $(document).ready(function () {
 
     }
 
-    /* set answerCard value based on first assessSelect array variable */
-    $("#answerCard").attr("value", assessSelect[0][0]);
-    /* detect answerCard value */
-    console.log($("#answerCard").attr("value"));
+
+    /* Check between mobile / desktop window sizes, then do approriate functions */
+    windowWidth = $(window).width();
+
+    if (windowWidth <= 959) {
+      /* set answerCard value based on first assessSelect array variable */
+      $("#answerCard").attr("value", assessSelect[0][0]);
+    } else {
+      /* set answerCard value based on first assessSelect array variable */
+      $("#bubbleCard").attr("value", assessSelect[0][0]);
+
+    }
+
+
     /* get array of questions based on answerCard value  */
     loadQuests(assessSelect[0][0]);
     loadQuests(assessSelect[1][0]);
     loadQuests(assessSelect[2][0]);
     /* load question from that specific questionSet  */
     displayQuest();
-    /* wait for user input  */
 
-    $(".singleA").on("click keydown", function () {
-      console.log("answer selected");
-      /* when user selects answer, run checkValue function to determine content of answer  */
-      checkValue($(this).attr("value"), $("#question").attr("value"));
-      /* load new question until all questions for answerCard value have been answered  */
-      $("#answerCard").fadeOut();
-      $("#question").fadeOut();
-      console.log(currentQuestSet);
-      if (totalQuests < 12) {
-        totalQuests++;
-        setTimeout(displayQuest, 1000);
+    /* Check between mobile / desktop window sizes, then do approriate functions */
+    windowWidth = $(window).width();
+    if (windowWidth <= 959) {
+      /* wait for user input  */
+      $(".singleA").on("click keydown", function () {
+        console.log("answer selected");
+        /* when user selects answer, run checkValue function to determine content of answer  */
+        checkValue($(this).attr("value"), $("#question").attr("value"));
+        /* load new question until all questions for answerCard value have been answered  */
+        $("#bubbleCard").fadeOut();
+        $("#answerCard").fadeOut();
+        $("#question").fadeOut();
+        console.log(currentQuestSet);
+        if (totalQuests < 12) {
+          totalQuests++;
+          setTimeout(displayQuest, 1000);
+        /* Load Next Question */
+        } else {
+          console.log("Assessment Complete")
+          /* Calculate Total Scores */
+          var struggleScore = 0;
+          var successScore = 0;
+          var worryScore = 0;
+          for (i = 1; i < 5; i++) {
+            struggleScore += selAnswerSets[0][i];
+          }
+          for (i = 1; i < 5; i++) {
+            successScore += selAnswerSets[1][i];
+          }
+          for (i = 1; i < 5; i++) {
+            worryScore += selAnswerSets[2][i];
+          }
 
-      } else {
-        console.log("Assessment Complete")
-        /* Calculate Total Scores */
-        var struggleScore = 0;
-        var successScore = 0;
-        var worryScore = 0;
-        for (i = 1; i < 5; i++) {
-          struggleScore += selAnswerSets[0][i];
+          assessResult[0][0] = selAnswerSets[0][0];
+          assessResult[0][1] = struggleScore;
+          assessResult[1][0] = selAnswerSets[1][0];
+          assessResult[1][1] = successScore;
+          assessResult[2][0] = selAnswerSets[2][0];
+          assessResult[2][1] = worryScore;
+
+          console.log(assessResult);
+          $("#struggleScore").text(struggleScore);
+          $("#successScore").text(successScore);
+          $("#worryScore").text(worryScore);
+          $("#struggleSet").text(assessResult[0][0]);
+          $("#successSet").text(assessResult[1][0]);
+          $("#worrySet").text(assessResult[2][0]);
+
+          console.log(selAnswerSets);
+          
+          /* DISPLAY RESULTS PAGE */
+          $("#assessmentContainer").fadeOut().css("display", "none");
+          $("#resultsContainer").fadeIn().css("display", "grid");
         }
-        for (i = 1; i < 5; i++) {
-          successScore += selAnswerSets[1][i];
+      });
+    } else {
+      /* wait for user input  */
+      $(".bubble").on("click keydown", function () {
+        console.log("answer selected");
+        /* when user selects answer, run checkValue function to determine content of answer  */
+        checkValue($(this).attr("value"), $("#question").attr("value"));
+        /* load new question until all questions for answerCard value have been answered  */
+        $("#bubbleCard").fadeOut();
+        $("#answerCard").fadeOut();
+        $("#question").fadeOut();
+        console.log(currentQuestSet);
+        if (totalQuests < 12) {
+          totalQuests++;
+          setTimeout(displayQuest, 1000);
+        /* Load Next Question */
+        } else {
+          console.log("Assessment Complete")
+          /* Calculate Total Scores */
+          var struggleScore = 0;
+          var successScore = 0;
+          var worryScore = 0;
+          for (i = 1; i < 5; i++) {
+            struggleScore += selAnswerSets[0][i];
+          }
+          for (i = 1; i < 5; i++) {
+            successScore += selAnswerSets[1][i];
+          }
+          for (i = 1; i < 5; i++) {
+            worryScore += selAnswerSets[2][i];
+
+          }
+          assessResult[0][0] = selAnswerSets[0][0];
+          assessResult[0][1] = struggleScore;
+          assessResult[1][0] = selAnswerSets[1][0];
+          assessResult[1][1] = successScore;
+          assessResult[2][0] = selAnswerSets[2][0];
+          assessResult[2][1] = worryScore;
+
+          console.log(assessResult);
+          $("#struggleScore").text(struggleScore);
+          $("#successScore").text(successScore);
+          $("#worryScore").text(worryScore);
+          $("#struggleSet").text(assessResult[0][0]);
+          $("#successSet").text(assessResult[1][0]);
+          $("#worrySet").text(assessResult[2][0]);
+
+          console.log(selAnswerSets);
+
+          /* DISPLAY RESULTS PAGE */
+          $("#assessmentContainer").fadeOut().css("display", "none");
+          $("#resultsContainer").fadeIn().css("display", "grid");
         }
-        for (i = 1; i < 5; i++) {
-          worryScore += selAnswerSets[2][i];
-
-        }
-        assessResult[0][0] = selAnswerSets[0][0];
-        assessResult[0][1] = struggleScore;
-        assessResult[1][0] = selAnswerSets[1][0];
-        assessResult[1][1] = successScore;
-        assessResult[2][0] = selAnswerSets[2][0];
-        assessResult[2][1] = worryScore;
-
-        console.log(assessResult);
-        $("#struggleScore").text(struggleScore);
-        $("#successScore").text(successScore);
-        $("#worryScore").text(worryScore);
-        $("#struggleSet").text(assessResult[0][0]);
-        $("#successSet").text(assessResult[1][0]);
-        $("#worrySet").text(assessResult[2][0]);
-
-        console.log(selAnswerSets);
-
-        
-
-        /* DISPLAY RESULTS PAGE */
-        $("#assessmentContainer").fadeOut().css("display","none");
-        $("#resultsContainer").fadeIn().css("display", "grid");
-      }
-      /* Load Next Question */
-    });
+      });
+    }
     /* repeat this process until all questionSets based on the values from assessSelect array have been completed  */
   }
 
