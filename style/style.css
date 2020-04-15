@@ -36,6 +36,14 @@
 /* MOBILE MEDIA QUERY  */
 @media only screen and (max-width: 959px) {
 
+    h1 {
+        font-family: 'PoppinsBody', arial, sans-serif;
+        font-size: 1.5em;
+        text-align: center;
+        font-weight: normal;
+        font-style: normal;
+        margin: 0px;
+    }
     h4,
     .headerText {
         font-family: 'PoppinsHeader', arial, sans-serif;
@@ -44,6 +52,7 @@
         font-style: normal;
         margin: 0px;
         text-align: center;
+        color: var(--textColor);
     }
 
     h6,
@@ -56,11 +65,11 @@
     }
 
     h6 {
-        font-size: 1.2em;
-        padding: 0px;
-        margin: 0px;
+        font-family: 'PoppinsHeader', arial, sans-serif;
+        font-size: 1.5em;
     }
 
+    
     p,
     .bodyText {
         font-family: 'PoppinsBody', arial, sans-serif;
@@ -83,7 +92,7 @@
         grid-column: 1 / span 8;
         grid-row: 1 / span 1;
         display: grid;
-        grid-template-columns: 20% 20% auto 20% 20%;
+        grid-template-columns: 20% 20% 20% auto auto;
         place-items: center;
         background-color: white;
 
@@ -98,6 +107,30 @@
         height: auto;
         place-self: center;
     }
+
+
+    .docs {
+        font-family: 'PoppinsBody', arial, sans-serif;
+        font-size: 0.8em;
+        font-weight: normal;
+        font-style: normal;
+        line-height: 1.2em;
+        text-decoration: none;
+        color: var(--textColor);
+
+    }
+    .button {
+        font-family: 'PoppinsHeader', arial, sans-serif;
+        font-size: 1.3em;
+        font-weight: normal;
+        font-style: normal;
+        color: #ffffff;
+        place-self: center;
+        background: var(--mainColor);
+        padding: 7.5px 15px 7.5px 15px;
+        border-radius: 4px;
+    }
+
 
     /* SITE - CONTENT */
     #site_Content {
@@ -130,7 +163,6 @@
 
     #ctaBtn {
         grid-row-start: 3;
-        border-radius: 20px;
     }
 
     /* SITE - CONTENT - PROMPTS  */
@@ -181,11 +213,13 @@
         grid-column-start: 1;
         grid-row-start: 2;
         grid-template-columns: repeat(8, 1fr);
-        grid-template-rows: auto 10% 10% 10% 10% 10% auto;
+        grid-template-rows: 25% 10% 10% 10% 10% 10% auto;
     }
 
     .response {
         grid-area: 2 / 2 / 1 / 8;
+        text-align: center;
+        place-self: center;
     }
 
     #struggle {
@@ -201,7 +235,7 @@
     }
 
     #reviewConfirm {
-        grid-area: 7 / 4 / 7 / 6;
+        grid-area: 6 / 1 / 6 / 9;
     }
 
     /* SITE - CONTENT - ASSESSMENT  */
@@ -214,9 +248,11 @@
     }
 
     #question {
+
         text-align: center;
         place-self: center;
-        grid-area: 1 / 2 / 1 / 8;
+        grid-area: 1 / 1 / 1 / 9;
+        padding: 0px 20px 0px 20px;
 
     }
 
@@ -303,6 +339,7 @@
         font-weight: normal;
         font-style: normal;
         margin: 0px;
+        color: var(--textColor);
     }
 
     h6,
@@ -312,13 +349,6 @@
         font-weight: normal;
         font-style: normal;
         color: var(--buttonColor);
-    }
-
-    h6 {
-        font-size: 1.8em;
-        padding: 0px;
-        margin: 0px;
-
     }
 
     .instructText {
@@ -636,12 +666,6 @@
 
     }
 
-    /* END OF DESKTOP MEDIA STYLE */
-}
-
-/* STYLE - HTML ELEMENTS */
-/* Links */
-/* NOT UPDATED FOR MOBILE */
 .underline {
     background:
         linear-gradient(to bottom, var(--mainColor) 0%,
@@ -661,16 +685,14 @@
     border-radius: var(--linkborder);
     padding: 2px 4px 2px 4px;
 }
+    /* END OF DESKTOP MEDIA STYLE */
+}
+
+/* STYLE - HTML ELEMENTS */
+/* Links */
+/* NOT UPDATED FOR MOBILE */
 
 /* Buttons */
-.button {
-    font-family: 'PoppinsHeader', arial, sans-serif;
-    font-size: 1.5em;
-    font-weight: normal;
-    font-style: normal;
-    color: #313131;
-    place-self: center;
-}
 
 body {
     background-color: #ffffff;
