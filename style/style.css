@@ -659,7 +659,7 @@ DESKTOP MEDIA QUERY
         text-align: left;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: 0.5fr 1fr 1fr 1fr;
+        grid-template-rows: 0.5fr 1fr 1fr;
     }
 
     .resultsTitle {
