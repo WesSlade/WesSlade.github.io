@@ -116,7 +116,7 @@ $(document).ready(function () {
  $("#beginBtn").on("click keydown", function () {
     $("#onBoard").fadeOut(function () {
       $("#assessIntro").fadeIn();
-      setTimeout(assessStart, pause);
+      setTimeout(assessStart, 2000);
     });
   });
 
