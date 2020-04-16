@@ -73,6 +73,22 @@ var assessResult = [
   ["worrySet", 0]
 ];
 
+
+var assessContent = [
+  ["adapability", "Adaptability is a constant battle for many self-directed learners. The pace of innovation across many fields and disciplines means that keeping up to date with evolving techniques, software, or training is often beyond the scope of day-to-day work and can often perpetually pushed aside. The increased pace of innovation also means there may be many different learning resources detailing many different approaches, which may result in more than a few learners deciding to stick with their own methods rather than face the overload of choices available to them."],
+  ["locations", "Related to 'Just in time learning', Need-based learning occurs when the learner is required (due to an external cause) to learn something to complete a specific task with limited prior knowledge of how to complete it. This leads the learner to begin seeking out learning resources and because of the lack of prior knowledge, often results in the learner spending large amounts of time seeking learning resources out instead of actually learning how to complete the task."],
+  ["desire-based-motivations", "Desire-based learning occurs when the learner has an intrinsic motivation or interest in learning about a specific topic, tool, or discipline. Making time for this type of learning can result in great strides in mastery of the chosen topic. Learners generally have a backlog of desire-based learning they want to accomplish and only be actively pursuing 1-2 at a time. Desire-based learning may not always have the clearest practical application to a learner's day-to-day activities but instead might be based on hobbies or future goals. "],
+  ["need-based-motivations", "Self-directed learning often takes place in a variety of different locations all with their own benefits and drawbacks that impact every learner differently. Some learners prefer specific locations that help them focus and make them feel comfortable. Many different attributes of the environment can impact how effectively a learner can focus. Learning to be aware of what kind of environmental factors impact your own learning and limiting or avoiding exposure to them will improve the effectiveness of self-directed learning"],
+  ["external-factors", "The digital age has revolutionized how learners can engage in self-directed learning, but has also introduced countless distracting elements as well.  Being able to tune out, or eliminate these barriers often results in more effective learning. Learners who take inventory of these distractions and take solid steps to remove them will be able to more effectively self-direct their learning."]
+];
+
+var selAssessContent = [
+  ["set", "CONTENT"],
+  ["set", "CONTENT"],
+  ["set", "CONTENT"]
+];
+
+var contentCounter = 0;
 /* PRE ASSESSMENT USERFLOW */
 /* PRE ASSESSMENT USERFLOW */
 /* PRE ASSESSMENT USERFLOW */
@@ -82,7 +98,7 @@ var assessResult = [
 function responseCollect() {
   console.log("Collecting Responses...");
   $("#struggle").text("I struggle with " + assessSelect[0][1]);
-  $("#success").text("I'm a star with " + assessSelect[1][1]);
+  $("#success").text("I'm find success with " + assessSelect[1][1]);
   $("#worry").text("I'm a little concerned about " + assessSelect[2][1]);
 }
 
@@ -107,7 +123,19 @@ $(document).ready(function () {
     /* Store value from response */
     assessSelect[assessCounter][0] = ($(this).attr("value"));
     assessSelect[assessCounter][1] = ($(this).text());
+    
     assessCounter++;
+    for (i = 0; i < 5; i++) {
+      if ( ($(this).attr("value") == assessContent[i][0])) {
+        console.log( $(this).attr("value") + " is the content");
+        selAssessContent[contentCounter][0] = ($(this).attr("value"))
+        selAssessContent[contentCounter][1] = assessContent[i][1];
+        contentCounter++;
+        
+      } else {
+        console.log("gonna keep looking");
+      }
+    }
     /* Check between mobile / desktop window sizes, then adjust grid accordingly */
     windowWidth = $(window).width();
     if (windowWidth <= 959) {
@@ -131,6 +159,17 @@ $(document).ready(function () {
     assessSelect[assessCounter][0] = ($(this).attr("value"));
     assessSelect[assessCounter][1] = ($(this).text());
     assessCounter++;
+
+    for (i = 0; i < 5; i++) {
+      if ( ($(this).attr("value") == assessContent[i][0])) {
+        console.log("found the content");
+        selAssessContent[contentCounter][0] = ($(this).attr("value"))
+        selAssessContent[contentCounter][1] = assessContent[i][1];
+        contentCounter++;
+      } else {
+        console.log("gonna keep looking");
+      }
+    }
     /* Check between mobile / desktop window sizes, then adjust grid accordingly */
     windowWidth = $(window).width();
     if (windowWidth <= 959) {
@@ -153,6 +192,17 @@ $(document).ready(function () {
     assessSelect[assessCounter][0] = ($(this).attr("value"));
     assessSelect[assessCounter][1] = ($(this).text());
     assessCounter++;
+
+
+    for (i = 0; i < 5; i++) {
+      if ( ($(this).attr("value") == assessContent[i][0])) {
+        console.log("found the content");
+        selAssessContent[contentCounter][0] = ($(this).attr("value"))
+        selAssessContent[contentCounter][1] = assessContent[i][1];
+      } else {
+        console.log("gonna keep looking");
+      }
+    }
     /* remove selection from future responses */
     var el = ($(this).attr('class').split(' ').pop());
     console.log(el);
@@ -162,6 +212,7 @@ $(document).ready(function () {
       responseCollect();
       $("#promptReview").fadeIn().css("display", "grid");
     });
+
   });
 
 
@@ -202,6 +253,7 @@ $(document).ready(function () {
       ["set", true, true, true, false],
     ];
 
+
     /* Iterates through the question sets and individual questions as user progresses */
 
     /* Min Value Of 0 / Max Value Of 3 */
@@ -216,8 +268,10 @@ $(document).ready(function () {
       var q = questionSets;
       var setQ = selQuestSets[nextQuestSet];
       var a = answerKey;
+      var c = assessContent;
       var setA = selAnswerKey[nextQuestSet];
       var setQA = selAnswerSets[nextQuestSet];
+      var setC = selAssessContent[nextQuestSet];
       for (i = 0; i < 5; i++) {
         if (n == q[i][0]) {
           console.log("found it");
@@ -414,6 +468,10 @@ $(document).ready(function () {
           $("#struggleSet").text(assessResult[0][0]);
           $("#successSet").text(assessResult[1][0]);
           $("#worrySet").text(assessResult[2][0]);
+          $("#struggleContent").text(selAssessContent[0][1]);
+          $("#successContent").text(selAssessContent[1][1]);
+          $("#worryContent").text(selAssessContent[2][1]);
+          
 
           console.log(selAnswerSets);
 
