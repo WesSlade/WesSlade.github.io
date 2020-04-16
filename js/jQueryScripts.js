@@ -15,7 +15,7 @@ var assessCounter = 0;
 
 /* Question Sets for assessment */
 var questionSets = [
-  ["adapability",
+  ["adaptability",
     "I can learn effectively in many different formats.",
     "I struggle to adapt to changes in my preferred software and hardware.",
     "I will use the same workflow for as long as I can, even if it’s not the most efficient way to complete my work.",
@@ -49,7 +49,7 @@ var questionSets = [
 
 /* User Input For Answers */
 var answerSets = [
-  ["adapability", 0, 0, 0, 0],
+  ["adaptability", 0, 0, 0, 0],
   ["locations", 0, 0, 0, 0],
   ["desire-based-motivations", 0, 0, 0, 0],
   ["need-based-motivations", 0, 0, 0, 0, 0],
@@ -58,7 +58,7 @@ var answerSets = [
 
 /* System Key for Calculating Answers */
 var answerKey = [
-  ["adapability", true, false, false, true],
+  ["adaptability", true, false, false, true],
   ["locations", false, true, false, false],
   ["desire-based-motivations", true, true, true, false],
   ["need-based-motivations", true, false, true, true],
@@ -75,7 +75,7 @@ var assessResult = [
 
 
 var assessContent = [
-  ["adapability", "Adaptability is a constant battle for many self-directed learners. The pace of innovation across many fields and disciplines means that keeping up to date with evolving techniques, software, or training is often beyond the scope of day-to-day work and can often perpetually pushed aside. The increased pace of innovation also means there may be many different learning resources detailing many different approaches, which may result in more than a few learners deciding to stick with their own methods rather than face the overload of choices available to them."],
+  ["adaptability", "Adaptability is a constant battle for many self-directed learners. The pace of innovation across many fields and disciplines means that keeping up to date with evolving techniques, software, or training is often beyond the scope of day-to-day work and can often perpetually pushed aside. The increased pace of innovation also means there may be many different learning resources detailing many different approaches, which may result in more than a few learners deciding to stick with their own methods rather than face the overload of choices available to them."],
   ["locations", "Self-directed learning often takes place in a variety of different locations all with their own benefits and drawbacks that impact every learner differently. Some learners prefer specific locations that help them focus and make them feel comfortable. Many different attributes of the environment can impact how effectively a learner can focus. Learning to be aware of what kind of environmental factors impact your own learning and limiting or avoiding exposure to them will improve the effectiveness of self-directed learning"],
   ["desire-based-motivations", "Desire-based learning occurs when the learner has an intrinsic motivation or interest in learning about a specific topic, tool, or discipline. Making time for this type of learning can result in great strides in mastery of the chosen topic. Learners generally have a backlog of desire-based learning they want to accomplish and only be actively pursuing 1-2 at a time. Desire-based learning may not always have the clearest practical application to a learner's day-to-day activities but instead might be based on hobbies or future goals. "],
   ["need-based-motivations", "Related to 'Just in time learning', Need-based learning occurs when the learner is required (due to an external cause) to learn something to complete a specific task with limited prior knowledge of how to complete it. This leads the learner to begin seeking out learning resources and because of the lack of prior knowledge, often results in the learner spending large amounts of time seeking learning resources out instead of actually learning how to complete the task. "],
@@ -108,10 +108,19 @@ $(document).ready(function () {
   //Call To Action Fade Event
   $("#ctaBtn").on("click keydown", function () {
     $("#callToAction").fadeOut(function () {
+      $("#onBoard").fadeIn();
+      /* setTimeout(assessStart, pause); */
+    });
+  });
+//Assessment Instructions
+ $("#beginBtn").on("click keydown", function () {
+    $("#onBoard").fadeOut(function () {
       $("#assessIntro").fadeIn();
       setTimeout(assessStart, pause);
     });
   });
+
+
   //Assessment Fade In
   function assessStart() {
     $("#assessIntro").fadeOut(function () {
@@ -436,7 +445,7 @@ $(document).ready(function () {
         console.log(currentQuestSet);
         if (totalQuests < 12) {
           totalQuests++;
-          setTimeout(displayQuest, 1000);
+          setTimeout(displayQuest, 500);
         /* Load Next Question */
         } else {
           console.log("Assessment Complete")
