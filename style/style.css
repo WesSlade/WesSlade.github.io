@@ -243,7 +243,7 @@
         margin: 0px;
         border-bottom: 1px solid var(--buttonColor);
         text-align: center;
-        padding-left:10px;
+        padding-left: 10px;
         padding-right: 10px;
     }
 
@@ -588,7 +588,7 @@ DESKTOP MEDIA QUERY
         font-weight: normal;
         font-style: normal;
         color: white;
-        padding: 5px;
+        padding: 10px;
         text-align: center;
         cursor: pointer;
     }
@@ -598,7 +598,7 @@ DESKTOP MEDIA QUERY
         grid-column-start: 2;
         grid-row-start: 2;
         grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: 10% 60% auto;
+        grid-template-rows: 10% 50% auto;
         column-gap: 24px;
         row-gap: 16px;
         text-align: center;

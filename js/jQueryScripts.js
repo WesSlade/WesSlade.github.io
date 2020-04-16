@@ -98,8 +98,8 @@ var contentCounter = 0;
 function responseCollect() {
   console.log("Collecting Responses...");
   $("#struggle").text("I struggle with " + assessSelect[0][1]);
-  $("#success").text("I'm find success with " + assessSelect[1][1]);
-  $("#worry").text("I'm a little concerned about " + assessSelect[2][1]);
+  $("#success").text("I find success with " + assessSelect[1][1]);
+  $("#worry").text("I'm concerned about " + assessSelect[2][1]);
 }
 
 
