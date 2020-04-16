@@ -667,7 +667,7 @@ DESKTOP MEDIA QUERY
     }
 
     .resultsContent {
-        grid-column: 1 / 2;
+        grid-column: 1 / 4;
         grid-row: 2 / 3;
     }
 
